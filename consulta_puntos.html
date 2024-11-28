@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consulta de Puntos</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      h2 {
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        padding: 10px;
+        margin-top: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      function enviarFormulario() {
+        const dni = document.getElementById("dni").value;  // Obtenemos el valor ingresado
+
+        // Verificamos si el campo está vacío
+        if (!dni) {
+          alert("Por favor, ingresa un DNI válido.");
+          return;  // Si está vacío, no procedemos
+        }
+
+        // Construimos la URL con el parámetro 'dni'
+        const baseUrl = "https://script.google.com/macros/s/AKfycbwfc8NdjQQv8sbTG1lqN77raPOwjUekzGG4uGvOaXQqIlWDLEjYSUVORsMArhuGSQOyBQ/exec";  // Usa la URL correcta de tu script
+        const nuevaUrl = `${baseUrl}?dni=${encodeURIComponent(dni)}`;
+
+        // Redirigimos al cliente a esa URL con el DNI
+        window.location.href = nuevaUrl;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Consulta tus puntos</h2>
+    <label for="dni">Ingresa tu DNI:</label><br />
+    <input type="text" id="dni" placeholder="Ejemplo: 12345678" required /><br />
+    <button onclick="enviarFormulario()">Consultar</button>
+  </body>
+</html>
